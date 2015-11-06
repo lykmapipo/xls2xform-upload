@@ -17,10 +17,10 @@ var simpleXlsForm = path.join(__dirname, 'fixtures', 'simple.xls');
 var app = express();
 
 app.use(bodyParser.json({
-    // limit: '50mb'
+    limit: '50mb'
 }));
 app.use(bodyParser.urlencoded({
-    // limit: '50mb',
+    limit: '50mb',
     extended: true
 }));
 

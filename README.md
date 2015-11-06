@@ -1,7 +1,7 @@
-xlsform-upload
+xls2xform-upload
 =================
 
-[![Build Status](https://travis-ci.org/lykmapipo/xlsform-upload.svg?branch=master)](https://travis-ci.org/lykmapipo/xlsform-upload)
+[![Build Status](https://travis-ci.org/lykmapipo/xls2xform-upload.svg?branch=master)](https://travis-ci.org/lykmapipo/xls2xform-upload)
 
 Upload and convert [XLSForm](http://xlsform.org/) into [XForm](http://opendatakit.github.io/odk-xform-spec/) in [nodejs](https://github.com/nodejs)
 
@@ -10,13 +10,13 @@ It support both `multiparty` request and normal http request where `xlsform` is 
 
 ## Installation
 ```sh
-$ npm install --save xlsform-upload
+$ npm install --save xls2xform-upload
 ```
 
 ## Usage
 ```js
 var app = require('express');
-var xlsformUpload = require('xlsform-upload');
+var xlsformUpload = require('xls2xform-upload');
 
 //use xlsform in your middlewares chain 
 app.get('/xform', xlsformUpload(), function(request, response) {
@@ -40,7 +40,7 @@ app.get('/xform', xlsformUpload({
 ```
 
 ## Options
-`xlsform-upload` accept the following options
+`xls2xform-upload` accept the following options
 
 - `fieldName` a name of the field used to extract xlsform details from `multiparty` or normal http request default to `xlsform`
 

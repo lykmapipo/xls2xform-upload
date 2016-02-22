@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 
 app.post('/xform', xlsformUpload(), function(request, response) {
     //access xform details using fieldName as a key
-    //defult to xls
+    //defult to xlsform
     response.json(request.body.xlsform);
 });
 

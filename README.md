@@ -21,8 +21,8 @@ var xlsformUpload = require('xls2xform-upload');
 //use xlsform in your middlewares chain 
 app.get('/xform', xlsformUpload(), function(request, response) {
     
-    //obtain xform details from request body
-    //by using fieldName or default to `xlsform`
+    //obtain xlsform and xform details from request body
+    //by using `xlsform` key by default
     request.body.xlsform;
 
 });
@@ -32,8 +32,8 @@ app.get('/xform', xlsformUpload({
     fieldName: 'form'
 }), function(request, response) {
 
-    //obtain xform details from request body
-    //by using fieldName or default to `xlsform`
+    //obtain xlsform and xform details from request body
+    //by using provided fieldName `form`
     request.body.form;
 
 });
@@ -44,6 +44,18 @@ app.get('/xform', xlsformUpload({
 
 - `fieldName` a name of the field used to extract xlsform details from `multiparty` or normal http request default to `xlsform`
 
+## Result
+`xls2xform-upload` will accept, parse and convert submitted `XLSForm` into `XForm`. The structure of result is as bellow:
+
+```js
+{
+    name: '<name of the file of xlsform uploaded>',
+    type: '<mime type of the file of uploaded xlsform>',
+    size: '<size of uploaded xlsform>',
+    base64:'<xlsform in base64>',
+    xform:'<xform>'
+}
+```
 
 ## Base64 Convertion
 In `base64` convertion you will have to prepare a json payload as below:

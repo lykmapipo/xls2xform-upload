@@ -1,6 +1,6 @@
 {
     "name": "xls2xform-upload",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Upload and convert XLSForm into XForm",
     "main": "index.js",
     "scripts": {

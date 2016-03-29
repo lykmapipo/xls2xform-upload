@@ -30,6 +30,14 @@ app.post('/xform', xlsformUpload(), function(request, response) {
     response.json(request.body.xlsform);
 });
 
+app.post('/xform_custom', xlsformUpload({
+    pythonPath: '/usr/bin/python'
+}), function(request, response) {
+    //access xform details using fieldName as a key
+    //defult to xlsform
+    response.json(request.body.xlsform);
+});
+
 describe('xlsform upload', function() {
 
     describe('unit', function() {
@@ -53,6 +61,21 @@ describe('xlsform upload', function() {
         it('should be able to convert attached xlsform into xform', function(done) {
             request(app)
                 .post('/xform')
+                .attach('xlsform', path.join(__dirname, 'fixtures', 'simple.xls'))
+                .end(function(error, response) {
+
+                    expect(error).to.not.exist;
+
+                    expect(response.body.xform.substring(0, 14))
+                        .to.be.equal(fs.readFileSync(simpleXForm, 'utf-8').substring(0, 14));
+
+                    done(error, response);
+                });
+        });
+
+        it('should be able to convert attached xlsform into xform using custom python path', function(done) {
+            request(app)
+                .post('/xform_custom')
                 .attach('xlsform', path.join(__dirname, 'fixtures', 'simple.xls'))
                 .end(function(error, response) {
 

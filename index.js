@@ -10,7 +10,7 @@ var multer = require('multer');
 var tmp = require('tmp');
 tmp.setGracefulCleanup();
 
-module.exports = function(options) {
+module.exports = exports = function(options) {
     //normalize options
     options = options || {};
 
@@ -46,7 +46,7 @@ module.exports = function(options) {
         //if sent as base64 encode
         var isBase64 =
             _.isPlainObject(request.body[options.fieldName]) && !request.file;
-            
+
         if (isBase64) {
             var file = request.body[options.fieldName];
             //normalize request file
@@ -101,9 +101,11 @@ module.exports = function(options) {
      * @param  {Function} next     next middleware to invoke
      */
     function xform(request, response, next) {
+        //obtain custom python settings
+        var settings = _.pick(options, ['pythonPath']);
 
         //convert xls form to xform
-        xls2xform(request.file.path, function(error, xform) {
+        xls2xform(request.file.path, settings, function(error, xform) {
             if (error) {
                 next(error);
             } else {

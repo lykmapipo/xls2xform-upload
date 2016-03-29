@@ -29,7 +29,8 @@ app.get('/xform', xlsformUpload(), function(request, response) {
 
 //or with options supplied
 app.get('/xform', xlsformUpload({
-    fieldName: 'form'
+    fieldName: 'form',
+    pythonPath:<custom_pathon_path>
 }), function(request, response) {
 
     //obtain xlsform and xform details from request body
@@ -43,6 +44,7 @@ app.get('/xform', xlsformUpload({
 `xls2xform-upload` accept the following options
 
 - `fieldName` a name of the field used to extract xlsform details from `multiparty` or normal http request default to `xlsform`
+- `pythonPath` path to custom python installation
 
 ## Result
 `xls2xform-upload` will accept, parse and convert submitted `XLSForm` into `XForm`. The structure of result is as bellow:
